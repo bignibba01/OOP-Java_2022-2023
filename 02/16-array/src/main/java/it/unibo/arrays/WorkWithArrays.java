@@ -2,6 +2,7 @@ package it.unibo.arrays;
 
 import java.security.spec.ECParameterSpec;
 import java.util.Arrays;
+import java.util.concurrent.CountDownLatch;
 
 class WorkWithArrays {
 
@@ -40,24 +41,31 @@ class WorkWithArrays {
     }
 
     static int mostRecurringElement(final int[] array) {
-        int countElement = 0;
+        int maxElements = 0;
+        int currentElements = 0;
         int max = 0;
 
         for(int x: array) {
-            countElement = 0;
-
-            for (int y: array) {
-                countElement = (y == x ? ++countElement : countElement);
-            }
-
-            max = (max < countElement ? x : max);
+            currentElements = countOccurrencies(array, x);
+            maxElements = (currentElements < maxElements ? maxElements : currentElements);
+            max = (maxElements <= currentElements ? x : max);
         }
-
         return max;
     }
 
     static int[] sortArray(final int[] array, final boolean isDescending) {
-        return array;
+
+        for (int j = 0; j < array.length; j++) {
+            for (int i = 0; i < array.length; i++) {
+                if (array[j] < array[i]) {
+                    int temp = array[i];
+                    array[i] = array[j];
+                    array[j] = temp;
+                }
+            }
+        }
+
+        return (isDescending ? revertUpTo(array, array[array.length - 1]) : array);
     }
 
     static double computeVariance(final int[] array) {
@@ -65,7 +73,13 @@ class WorkWithArrays {
     }
 
     static int[] revertUpTo(final int[] array, final int element) {
-        return null;
+        int[] copy;
+        int count = 0;
+        while (array[count++] != element);
+        copy = new int[count];
+        for (int i = 0; i < count; copy[i] = array[i++]);
+        for (int i = 0, j = count - 1; i < count && j >= 0; array[i++] = copy[j--]);
+        return array;
     }
 
     static int[] duplicateElements(final int[] array, final int times) {
@@ -86,7 +100,7 @@ class WorkWithArrays {
             && countOccurrencies(new int[] { 0, 2, 3, 4 }, 1) == 0
             && countOccurrencies(new int[] { 7, 4, 1, 9, 3, 1, 5 }, 2) == 0
             && countOccurrencies(new int[] { 1, 2, 1, 3, 4, 1 }, 1) == 3
-            && countOccurrencies(new int[] { 1, 4, 5, 2, 5, 2, 2, 0}, 2) == 4;
+            && countOccurrencies(new int[] { 1, 4, 5, 2, 5, 2, 2, 0}, 2) == 3;
     }
 
     /* Utility method for testing evenElems method */
@@ -163,18 +177,5 @@ class WorkWithArrays {
         System.out.println("testRevertUpTo: " + testRevertUpTo());
         System.out.println("testDupElems: " + testDuplicateElements());
         System.out.println(" * evenElems: ");
-
-        for(int elem: evenElements(new int[] {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10})) {
-            System.out.print("\t" + elem);
-        }
-        System.out.println();
-
-        for(int elem: oddElements(new int[] {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11})) {
-            System.out.print("\t" + elem);
-        }
-        System.out.println();
-
-        System.out.println(" * mostRecurringWElement: " + mostRecurringElement(new int[] {7, 1, 5, 7, 7, 9}));
-
     }
 }

@@ -21,7 +21,7 @@ class SeqRecognizer {
             return false;
         }
 
-        for ( ; i < (array.length - 1) && (array[i] == 2 && (array[array.length - 1] == 3)); i++);
+        for (; i < (array.length - 1) && (array[i] == 2 && (array[array.length - 1] == 3)); i++);
 
         return (array[0] == 1) ? (++i) == array.length : false; 
     }
@@ -35,13 +35,13 @@ class SeqRecognizer {
             return false;
         }
 
-        for ( ; i < array.length && array[i] == 2; i++);
+        for (; i < array.length && array[i] == 2; i++);
 
         if (i == array.length || array[i++] != 3) {
             return false;
         }
 
-        for ( ; i < array.length && (array[i] == 4 || array[i] == 5); i++);
+        for (; i < array.length && (array[i] == 4 || array[i] == 5); i++);
 
         return i == array.length;
     }
@@ -51,12 +51,12 @@ class SeqRecognizer {
      */
     static boolean checkSeq4(final int[] array) {
         int i = 0;
-        if (array[i] == 2 || array[i] == 3)
-            i++;
-        System.out.println(i);
-        for ( ; i < array.length && array[i] == 4; i++);
 
-        return (array[array.length - 1] == 5) ? (++i) == array.length : false;
+        for (; i < array.length && (array[i] == 2 || array[i] == 3); i++);
+        for (; i < array.length && (array[i] == 4); i++);
+
+        return array.length != 0 ? ((array[array.length - 1] == 5)
+            ? (++i) == array.length : false) : false;
     }
 
     /** Testing methods **/
