@@ -3,15 +3,36 @@ package it.unibo.arrays;
 class PlayWithSmartphoneArrays {
 
     static int search(Smartphone[] array, String brand) {
-        return 0;
+        int count = 0;
+
+        for (Smartphone elem: array) {
+            if (elem.brand == brand) {
+                count++;
+            }
+        }
+        return count;
     }
 
     static int search(Smartphone[] array, boolean hasNFC, boolean hasGPS) {
-        return 0;
+        int count = 0;
+
+        for (Smartphone elem: array) {
+            if (elem.hasNFC && elem.hasGPS) {
+                count++;
+            }
+        }
+        return count;
     }
 
     static int search(Smartphone[] array, int nCPUs, int sdSize, boolean has3G) {
-        return 0;
+        int count = 0;
+
+        for (Smartphone elem: array) {
+            if (elem.getCPUs() == nCPUs && elem.getSdSize() == sdSize && elem.has3G()) {
+                count++;
+            }
+        }
+        return count;
     }
 
     public static void main(String[] args) {
@@ -38,7 +59,7 @@ class PlayWithSmartphoneArrays {
         // controllare la corrispondenza del numero dei telefoni facenti match
         System.out.println("The number of HTC smartphones is: " + search(phones, "HTC"));
         System.out.println("The number of smartphones with NFC & GPS is: " + search(phones, true, true));
-        System.out.println("The number of smartphones with 1 CPU 2048 MB sd and 3g is: "
+        System.out.println("The number of smartphones with 2 CPU 8192 MB sd and 3g is: "
                 + search(phones, 2, 8192, true));
     }
 }

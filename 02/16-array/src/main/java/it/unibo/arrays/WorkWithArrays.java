@@ -69,7 +69,19 @@ class WorkWithArrays {
     }
 
     static double computeVariance(final int[] array) {
-        return 0;
+        double ret = 0.0;
+        double sum = 0.0;
+        double average = 0.0;
+        for (int x: array) {
+            sum += x;
+        }
+        average = sum / array.length;
+        sum = 0.0;
+        for (int x: array) {
+            sum = sum + Math.pow((x - average), 2.0);
+        }
+        ret = sum / array.length;
+        return ret;
     }
 
     static int[] revertUpTo(final int[] array, final int element) {
@@ -176,6 +188,5 @@ class WorkWithArrays {
         System.out.println("testComputeVariance: " + testComputeVariance());
         System.out.println("testRevertUpTo: " + testRevertUpTo());
         System.out.println("testDupElems: " + testDuplicateElements());
-        System.out.println(" * evenElems: ");
     }
 }
