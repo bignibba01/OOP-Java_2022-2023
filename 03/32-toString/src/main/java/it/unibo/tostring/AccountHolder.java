@@ -26,7 +26,7 @@ public class AccountHolder {
 
     public String toString() {
         // Should print name, surname, and account id.
-        return null;
+        return "Name: " + this.getName() + ", Surname: " + this.getSurname() + ", Id: " + this.getUserID();
     }
 
     public static void main(final String[] args) {
