@@ -4,6 +4,9 @@
 # Compiled class file
 */*/*.class
 */*/bin/
+*/*/.gradle/
+*/*/gradlew
+*/*/.gradle
 
 # Log file
 *.log
