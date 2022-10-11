@@ -31,4 +31,9 @@ public class Rectangle implements Polygon {
     public int getEdgeCount() {
         return this.NUM_EDGES;
     }
+
+    public String toString() {
+        return "Rectangle -> Base: " + this.getBase() + ", Height: " + this.getHeight()
+            + ", Surface: " + this.calcSurface() + ", Perimeter: " + this.calcPerimeter();
+    }
 }

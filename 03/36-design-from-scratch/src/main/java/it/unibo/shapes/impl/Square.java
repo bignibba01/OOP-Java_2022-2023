@@ -25,4 +25,9 @@ public class Square implements Polygon {
     public int getEdgeCount() {
         return this.NUM_EDGES;
     }
+
+    public String toString() {
+        return "Square -> Edge: " + this.getEdge() + ", Surface: "
+            + this.calcSurface() + ", Perimeter: " + this.calcPerimeter();
+    }
 }
