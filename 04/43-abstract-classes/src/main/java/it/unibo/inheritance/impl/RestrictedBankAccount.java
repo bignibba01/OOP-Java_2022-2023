@@ -16,5 +16,13 @@ public class RestrictedBankAccount extends AbstractBankAccount{
     protected double computeFee() {
         return MANAGEMENT_FEE + getTransactionsCount() * TRANSACTION_FEE;
     }
+
+    public void chargeManagementFees(final int usrID) {
+        final double feeAmount = MANAGEMENT_FEE + getTransactionsCount() * TRANSACTION_FEE;
+        if (checkUser(usrID) && isWithdrawAllowed(feeAmount)) {
+            super.deposit(super.getAccountHolder().getUserID(), -feeAmount);
+            resetTransactions();
+        }
+    }
     
 }
