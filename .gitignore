@@ -2,7 +2,8 @@
 *.txt
 gradle-wrapper-master/
 Slides/
-
+*/*/*/.git
+*/*/*/.git*
 # Compiled class file
 */*/*.class
 */*/bin/
