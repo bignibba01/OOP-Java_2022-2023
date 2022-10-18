@@ -2,8 +2,7 @@
 *.txt
 gradle-wrapper-master/
 Slides/
-*/*/*/.git
-*/*/*/.git*
+05/54-branching
 # Compiled class file
 */*/*.class
 */*/bin/
