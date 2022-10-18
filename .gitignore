@@ -1,5 +1,6 @@
 # Simple text file
 *.txt
+gradle-wrapper-master/
 
 # Compiled class file
 */*/*.class
