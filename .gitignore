@@ -1,6 +1,7 @@
 # Simple text file
 *.txt
 gradle-wrapper-master/
+Slides/
 
 # Compiled class file
 */*/*.class

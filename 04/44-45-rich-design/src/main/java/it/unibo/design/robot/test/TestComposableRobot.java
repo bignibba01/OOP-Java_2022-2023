@@ -3,6 +3,10 @@ package it.unibo.design.robot.test;
 /**
  * Utility class for testing composable robots
  */
+import it.unibo.design.robot.environment.impl.*;
+import it.unibo.design.robot.impl.*;
+import it.unibo.design.robot.api.*;
+
 public final class TestComposableRobot {
 
     private static final int CYCLES = 200;
@@ -10,29 +14,24 @@ public final class TestComposableRobot {
     private TestComposableRobot() { }
 
     public static void main(final String[] args) {
-        /*
-         * Uncomment the method parts by moving the comment-ending token
+
         final ComposableRobot r0 = new SimpleComposableRobot("Evangelion Unit 01");
         final RobotPart navi = new BorderNavigator();
         final RobotPart battery = new AtomicBattery();
         final CommandableRobotPart arm1 = new RobotArm();
         final CommandableRobotPart arm2 = new RobotArm();
-         */
-        /*
-         * Component connection
+         
         r0.attachComponent(navi);
         r0.attachComponent(battery);
         r0.attachComponent(arm1);
         r0.attachComponent(arm2);
-         */
-        /*
-         * Turn on components
+
+        // Turn on components
         navi.turnOn();
         arm1.turnOn();
         arm2.turnOn();
-         */
-        /*
-         * Run some cycles
+         
+        // Run some cycles
         for (int i = 0; i < CYCLES; i++) {
             if (r0.getBatteryLevel() < BaseRobot.BATTERY_FULL / 2) {
                 battery.turnOn();
@@ -43,16 +42,14 @@ public final class TestComposableRobot {
             arm2.sendCommand(arm2.availableCommands()[i % arm2.availableCommands().length]);
             r0.doCycle();
         }
-         */
-        /*
-         * Detach components
+         
+        // Detach components
         r0.detachComponent(arm1);
         r0.detachComponent(arm2);
-         */
-        /*
-         * Test if it runs anyway
+        
+        // Test if it runs anyway
         r0.doCycle();
         r0.doCycle();
-         */
+        
     }
 }
